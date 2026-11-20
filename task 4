@@ -1,0 +1,27 @@
+Pseudocode: Adding a Donor
+Algorithm: AddDonor(list, donor)
+
+BEGIN
+    IF list is full THEN
+        IF capacity = 0 THEN
+            newCapacity ← 2
+        ELSE
+            newCapacity ← capacity × 2
+        END IF
+
+        temp ← realloc(data, newCapacity × size of Donor)
+
+        IF temp = NULL THEN
+            DISPLAY "Memory allocation failed"
+            RETURN FAILURE
+        END IF
+
+        data ← temp
+        capacity ← newCapacity
+    END IF
+
+    data[size] ← donor
+    size ← size + 1
+
+    RETURN SUCCESS
+END
