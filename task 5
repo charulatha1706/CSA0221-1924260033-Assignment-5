@@ -1,0 +1,42 @@
+Pseudocode:
+Algorithm: UpdateStockFile(filename, index, newUnits)
+
+BEGIN
+    OPEN file in read and write binary mode
+
+    IF file cannot be opened THEN
+        DISPLAY "File opening failed"
+        RETURN FAILURE
+    END IF
+
+    position ← index × size of Stock
+
+    IF fseek(file, position, SEEK_SET) fails THEN
+        CLOSE file
+        RETURN FAILURE
+    END IF
+
+    READ one Stock record using fread()
+
+    IF reading fails THEN
+        CLOSE file
+        RETURN FAILURE
+    END IF
+
+    record.units ← newUnits
+
+    MOVE file pointer backwards by size of Stock
+
+    WRITE updated record using fwrite()
+
+    IF writing fails THEN
+        CLOSE file
+        RETURN FAILURE
+    END IF
+
+    CLOSE file
+
+    DISPLAY "Stock updated successfully"
+
+    RETURN SUCCESS
+END
