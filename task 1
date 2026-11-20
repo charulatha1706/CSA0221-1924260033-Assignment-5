@@ -1,0 +1,24 @@
+void findEligibleDonors(Donor donors[], int n,
+                        int *eligibleCount,
+                        int *youngestDonorID)
+{
+    int i;
+
+    *eligibleCount = 0;
+    int youngestAge = 1000;
+    *youngestDonorID = -1;
+
+    for (i = 0; i < n; i++)
+    {
+        if (checkEligibility(&donors[i]))
+        {
+            (*eligibleCount)++;
+
+            if (donors[i].age < youngestAge)
+            {
+                youngestAge = donors[i].age;
+                *youngestDonorID = donors[i].id;
+            }
+        }
+    }
+}
