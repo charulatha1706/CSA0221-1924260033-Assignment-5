@@ -1,0 +1,24 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char *name = NULL;
+    size_t size = 0;
+
+    printf("Enter donor name: ");
+
+    if (getline(&name, &size, stdin) == -1)
+    {
+        perror("getline");
+        free(name);
+        return 1;
+    }
+
+    printf("Donor Name: %s", name);
+
+    free(name);
+
+    return 0;
+}
