@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc < 2)
+    {
+        printf("Error: No command provided.\n");
+        return 1;
+    }
+
+    if (strcmp(argv[1], "find") == 0)
+    {
+        if (argc != 3)
+        {
+            printf("Usage: bloodbank find <blood_group>\n");
+            return 1;
+        }
+
+        printf("Searching donors with blood group %s\n", argv[2]);
+    }
+
+    else if (strcmp(argv[1], "issue") == 0)
+    {
+        if (argc != 4)
+        {
+            printf("Usage: bloodbank issue <blood_group> <units>\n");
+            return 1;
+        }
+
+        printf("Issuing %s units: %s\n", argv[3], argv[2]);
+    }
+
+    else
+    {
+        printf("Error: Invalid command.\n");
+        return 1;
+    }
+
+    return 0;
+}
